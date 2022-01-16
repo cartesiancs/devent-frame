@@ -87,10 +87,61 @@ async function userLogin() {
         setTimeout(() => {
             location.href = '/'
         }, 1200);
+    } else if (data.status == -1) {
+        Swal.fire({
+            icon: 'error',
+            title: '탈퇴한 회원이거나 권한이 없습니다',
+            showConfirmButton: false,
+            timer: 1000
+        })
     } else {
         Swal.fire({
             icon: 'error',
             title: '로그인 실패',
+            showConfirmButton: false,
+            timer: 1000
+        })
+    } 
+}
+
+async function userSendDelete(user_id) {
+
+    let response = await fetch("/api/users/"+user_id, {
+        method: "DELETE",
+        headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+        }
+    });
+
+    let data = response.json();
+    return data;
+}
+
+async function userDelete() {
+    let user_id = getUserInfo(getToken('user')).user_id
+    
+    let data = await userSendDelete(user_id);
+    if (data.status == 1) {
+        Swal.fire({
+            icon: 'success',
+            title: '삭제 완료',
+            showConfirmButton: false,
+            timer: 1000
+        })
+        setTimeout(() => {
+            location.href = '/'
+        }, 1200);
+    } else if (data.status == -1) {
+        Swal.fire({
+            icon: 'error',
+            title: '권한이 없습니다',
+            showConfirmButton: false,
+            timer: 1000
+        })
+    } else {ㅌ
+        Swal.fire({
+            icon: 'error',
+            title: '삭제 실패',
             showConfirmButton: false,
             timer: 1000
         })

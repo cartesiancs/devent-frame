@@ -30,6 +30,7 @@ CREATE TABLE `users` (
   `user_id` varchar(20) DEFAULT NULL,
   `user_pw` varchar(400) DEFAULT NULL,
   `user_email` varchar(40) DEFAULT NULL,
+  `user_auth` int(3) unsigned DEFAULT 0,
   PRIMARY KEY (`idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

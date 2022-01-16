@@ -4,7 +4,7 @@ import data from '../config/jwt.js';
 import { encryptPassword, checkAvailableUser, grantToken } from '../services/users.serv.js';
 
 
-import { createUser } from '../models/users.model.js';
+import { createUser, grantAuthorization } from '../models/users.model.js';
 
 let jwtSecret = data.secret;
 
@@ -29,8 +29,27 @@ export async function create (req, res) {
 
     let user = { user_id, user_hash_pw, user_email }
     let data = await createUser(user)
-    let createdToken = await grantToken(user_id);
 
-    res.cookie('user', createdToken);
-    res.status(200).json({status:1, data:data})
+    let is_grant = await grantAuthorization(user_id, 1);
+
+    if (is_grant.status == 1) {
+        let createdToken = await grantToken(user_id);
+        res.cookie('user', createdToken);
+        res.status(200).json({status:1, data:data})
+    } else {
+        res.status(200).json({status:0})
+    }
+
+}
+
+export async function deleteUserInfo (req, res) {
+    let user_id = req.params.user_id;
+    let is_revoke = await grantAuthorization(user_id, 0);
+
+    if (is_revoke.status == 1) {
+        res.clearCookie('user')
+        res.status(200).json({status:1})
+    } else {
+        res.status(200).json({status:0})
+    }
 }
