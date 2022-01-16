@@ -1,0 +1,35 @@
+.navbar-blur {
+    background-color: #212529d5;
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.btn-outline-light:hover {
+    color: #212529 !important;
+}
+
+.btn-rounded {
+    border-radius: 10px;
+}
+
+
+.font-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    word-break: keep-all;
+}
+
+.font-weight-lg {
+    font-family: 'Noto Sans KR', sans-serif;
+    word-break: keep-all;
+    font-weight: 700 !important;
+}
+.font-weight-md {
+    font-family: 'Noto Sans KR', sans-serif;
+    word-break: keep-all;
+    font-weight: 500 !important;
+}
+
+.card-title{
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
