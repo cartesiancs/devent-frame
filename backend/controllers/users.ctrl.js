@@ -12,9 +12,10 @@ let jwtSecret = data.secret;
 
 
 export async function create (req, res) {
-    let user_id = req.body.user_id;
-    let user_pw = req.body.user_pw;
-    let user_email = req.body.user_email;
+    let user_id = Buffer.from(req.body.user_id, "base64").toString('utf8');
+    let user_pw = Buffer.from(req.body.user_pw, "base64").toString('utf8');
+    let user_email = Buffer.from(req.body.user_email, "base64").toString('utf8');
+
 
     let is_available = await checkAvailableUser({user_id, user_email})
 

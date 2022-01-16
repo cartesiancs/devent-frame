@@ -14,9 +14,9 @@ async function userSendSignup(user) {
 }
 
 async function userSignup() {
-    let user_id = document.querySelector("#Username").value;
-    let user_pw = document.querySelector("#Password").value;
-    let user_email = document.querySelector("#Email").value;
+    let user_id = btoa(document.querySelector("#Username").value);
+    let user_pw = btoa(document.querySelector("#Password").value);
+    let user_email = btoa(document.querySelector("#Email").value);
 
     let user = {user_id, user_pw, user_email}
     
@@ -63,7 +63,7 @@ async function userSendLogin(user) {
         headers: {
         "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: `user_id=${user_id}&user_pw=${user_pw}`
+        body: `user_id="${user_id}"&user_pw="${user_pw}"`
     });
 
     let data = response.json();
@@ -71,8 +71,8 @@ async function userSendLogin(user) {
 }
 
 async function userLogin() {
-    let user_id = document.querySelector("#Username").value;
-    let user_pw = document.querySelector("#Password").value;
+    let user_id = btoa(document.querySelector("#Username").value);
+    let user_pw = btoa(document.querySelector("#Password").value);
 
     let user = {user_id, user_pw}
     

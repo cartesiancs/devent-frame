@@ -10,8 +10,8 @@ let jwtSecret = data.secret;
 
 
 export async function login (req, res) {
-    let user_id = req.body.user_id;
-    let user_pw = req.body.user_pw;
+    let user_id = Buffer.from(req.body.user_id, "base64").toString('utf8');
+    let user_pw = Buffer.from(req.body.user_pw, "base64").toString('utf8');
 
     let data = await loadUserinfo(user_id)
     let result = await comparePassword(user_pw, data.user_pw)

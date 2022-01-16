@@ -71,10 +71,9 @@ export async function checkAvailableUser(user) {
         let is_available = 1
         let is_duplicate = await checkDuplicateUser(user)
 
-        let pattern_spc = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
-        let pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
+        let pattern_spc = /[^\w]/;
     
-        if (pattern_spc.test(String(user_id)) == true || pattern_kor.test(String(user_id)) == true) {
+        if (pattern_spc.test(String(user_id)) == true) {
             is_available = 0
         } 
         if (is_duplicate.cnt >= 1) {
