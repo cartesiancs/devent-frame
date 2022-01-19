@@ -1,10 +1,10 @@
 import { Router } from 'express';
 const router = Router();
 
-import { index } from '../controllers/feed.ctrl.js';
+import { getFeed } from '../controllers/feed.ctrl.js';
 
 
-router.get('/', index);
+router.get('/:idx', getFeed);
 
 
 export default router;

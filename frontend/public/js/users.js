@@ -138,7 +138,7 @@ async function userDelete() {
             showConfirmButton: false,
             timer: 1000
         })
-    } else {ㅌ
+    } else {
         Swal.fire({
             icon: 'error',
             title: '삭제 실패',

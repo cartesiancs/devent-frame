@@ -34,6 +34,15 @@ CREATE TABLE `users` (
   PRIMARY KEY (`idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `feeds` (
+  `idx` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `feed_content` varchar(1000) DEFAULT '''''',
+  `feed_owner` varchar(30) DEFAULT NULL,
+  `feed_date` varchar(50) DEFAULT NULL,
+  `feed_type` int(2) DEFAULT NULL,
+  PRIMARY KEY (`idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
