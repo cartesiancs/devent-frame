@@ -33,9 +33,9 @@ export async function checkDuplicateUser(user) {
     try {
         let { user_id, user_email} = user;
 
-        let getUser = "SELECT COUNT(*) as cnt FROM users WHERE user_id = ? OR user_email = ?";
+        let getUserCount = "SELECT COUNT(*) as cnt FROM users WHERE user_id = ? OR user_email = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(getUser, [user_id, user_email], function(err, result) {
+            conn.query(getUserCount, [user_id, user_email], function(err, result) {
                 resolve(result)
             });
         })

@@ -10,7 +10,7 @@ async function getSendFeed(idx) {
 }
 
 async function getFeed(idx) {
-    let data = getSendFeed(idx)
+    let data = await getSendFeed(idx)
     
     console.log(data)
 }

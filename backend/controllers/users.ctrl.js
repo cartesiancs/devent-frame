@@ -3,12 +3,9 @@ import data from '../config/jwt.js';
 
 import { encryptPassword, checkAvailableUser, grantToken } from '../services/users.serv.js';
 
-
-import { createUser, grantAuthorization } from '../models/users.model.js';
+import { createUser, loadUserinfo, grantAuthorization } from '../models/users.model.js';
 
 let jwtSecret = data.secret;
-
-// create / load / edit / delete
 
 
 export async function create (req, res) {
@@ -54,3 +51,28 @@ export async function deleteUserInfo (req, res) {
         res.status(200).json({status:0})
     }
 }
+
+export async function getUserInfo (req, res) {
+    try {
+        let user_id = req.params.user_id;
+        let user_data = await loadUserinfo(user_id);
+
+        let result = {
+            idx: user_data.idx, 
+            user_auth: user_data.user_auth, 
+            user_email: user_data.user_email, 
+            user_id: user_data.user_id
+        }
+    
+        if (user_data.user_auth >= 1) {
+            res.status(200).json({status:1, data:result})
+        } else {
+            res.status(200).json({status:0})
+        }
+    } catch (error) {
+        res.status(500).json({status:0})
+    }
+
+}
+
+

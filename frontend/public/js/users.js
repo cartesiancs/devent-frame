@@ -147,3 +147,25 @@ async function userDelete() {
         })
     } 
 }
+
+
+async function userSendGet(user_id) {
+
+    let response = await fetch("/api/users/"+user_id, {
+        method: "GET"
+    });
+
+    let data = response.json();
+    return data;
+}
+
+async function userGet(user_id) {
+    let user_data = await userSendGet(user_id)
+    
+    if (user_data.status == 1) {
+        console.log(user_data)
+
+    } else {
+        console.log(user_data)
+    } 
+}
