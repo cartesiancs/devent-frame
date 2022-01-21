@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import data from '../config/jwt.js';
 
-import { comparePassword, grantToken } from '../services/users.serv.js';
+import { comparePassword, grantToken, decodeToken } from '../services/users.serv.js';
 
 
 import { loadUserinfo } from '../models/users.model.js';
@@ -18,12 +18,19 @@ export async function login (req, res) {
     
     if (result.status == 1 && data.user_auth == 1) {
         let createdToken = await grantToken(user_id);
-        res.cookie('user', createdToken);
-        res.status(200).json({status:1})
+        res.status(200).json({status:1, token:createdToken})
     } else if (data.user_auth == 0) {
-        res.status(200).json({status:-1})
+        res.status(401).json({status:-1})
     } else {
-        res.status(200).json({status:0})
+        res.status(401).json({status:0})
     }
+
+}
+
+export async function me (req, res) {
+    let token = req.headers['x-access-token'];
+    let data = await decodeToken(token)
+    
+    res.status(200).json({status:1, user_id:data})
 
 }

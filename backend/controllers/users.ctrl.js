@@ -32,8 +32,7 @@ export async function create (req, res) {
 
     if (is_grant.status == 1) {
         let createdToken = await grantToken(user_id);
-        res.cookie('user', createdToken);
-        res.status(200).json({status:1, data:data})
+        res.status(200).json({status:1, token:createdToken})
     } else {
         res.status(200).json({status:0})
     }

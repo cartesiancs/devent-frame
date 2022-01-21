@@ -22,6 +22,8 @@ async function userSignup() {
     
     let data = await userSendSignup(user);
     if (data.status == 1) {
+        Cookies.set('user', data.token)
+
         Swal.fire({
             icon: 'success',
             title: '가입 성공',
@@ -78,6 +80,8 @@ async function userLogin() {
     
     let data = await userSendLogin(user);
     if (data.status == 1) {
+        Cookies.set('user', data.token)
+
         Swal.fire({
             icon: 'success',
             title: '로그인 성공',
@@ -109,7 +113,9 @@ async function userSendDelete(user_id) {
     let response = await fetch("/api/users/"+user_id, {
         method: "DELETE",
         headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
+            "x-access-token": getToken('user')
+
         }
     });
 
@@ -161,6 +167,30 @@ async function userSendGet(user_id) {
 
 async function userGet(user_id) {
     let user_data = await userSendGet(user_id)
+    
+    if (user_data.status == 1) {
+        console.log(user_data)
+
+    } else {
+        console.log(user_data)
+    } 
+}
+
+async function authSendMe() {
+
+    let response = await fetch("/api/auth/me", {
+        method: "GET",
+        headers: {
+            "x-access-token": getToken('user')
+        }
+    });
+
+    let data = response.json();
+    return data;
+}
+
+async function checkAuthMe() {
+    let user_data = await authSendMe()
     
     if (user_data.status == 1) {
         console.log(user_data)

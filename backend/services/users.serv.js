@@ -86,3 +86,18 @@ export async function checkAvailableUser(user) {
         throw Error(err)
     }
 }
+
+export async function decodeToken(token) {
+    try {
+        const token_data = await new Promise((resolve, reject) => {
+            let decoded = jwt.verify(token, jwtSecret);
+            resolve(decoded.user_id)
+        })
+      
+        return token_data
+        
+    } catch (err) {
+        console.log(err)
+        throw Error(err)
+    }
+}
