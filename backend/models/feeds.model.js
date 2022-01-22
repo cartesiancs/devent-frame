@@ -41,7 +41,7 @@ export async function getFeedsIdx(idx) {
     }
 }
 
-export async function insertFeed(insertData) {
+export async function insertFeedData(insertData) {
     try {
         let { content, owner, date, type } = insertData;
         let insertFeeds = "INSERT INTO feeds(feed_content, feed_owner, feed_date, feed_type) VALUES (?,?,?,?)";

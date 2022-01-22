@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import data from '../config/jwt.js';
 
-import { comparePassword, grantToken, decodeToken } from '../services/users.serv.js';
+import { comparePassword, grantToken, transformTokentoUserid } from '../services/users.serv.js';
 
 
 import { loadUserinfo } from '../models/users.model.js';
@@ -29,7 +29,7 @@ export async function login (req, res) {
 
 export async function me (req, res) {
     let token = req.headers['x-access-token'];
-    let data = await decodeToken(token)
+    let data = await transformTokentoUserid(token)
     
     res.status(200).json({status:1, user_id:data})
 
