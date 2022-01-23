@@ -16,6 +16,24 @@ async function getFeed(idx) {
 }
 
 
+async function getSendFeedRange(start) {
+
+    let response = await fetch(`/api/feeds?start=${start}`, {
+        method: "GET",
+        headers: {
+            "x-access-token": getToken('user')
+        },
+    });
+
+    let data = response.json();
+    return data;
+}
+
+async function getFeedRange(start) {
+    let data = await getSendFeedRange(start)
+    return data
+}
+
 
 async function insertSendFeed(content) {
 

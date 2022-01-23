@@ -33,3 +33,7 @@
     font-family: 'Noto Sans KR', sans-serif;
 
 }
+
+.form-textarea{
+    border: none !important;
+}

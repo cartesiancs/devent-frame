@@ -17,6 +17,25 @@ export async function getFeed (req, res) {
     }
 }
 
+export async function getFeedRange (req, res) {
+
+    let getRange = 10;
+    let queryStart = req.query.start;
+
+    let start = Number.isInteger(queryStart) == true ? queryStart : 0
+    let end = start+getRange;
+
+
+    let data = await getFeedsRange({ start, end })
+
+    if (data.status == 1) {
+        res.status(200).json({data:data.result})
+    } else {
+        res.status(404).json({data:'', msg:'Not Found'})
+
+    }
+}
+
 export async function insertFeed (req, res) {
     let token = req.headers['x-access-token'];
     var now = dayjs();

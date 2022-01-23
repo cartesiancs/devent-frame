@@ -27,7 +27,7 @@
     <section class="py-5" id="features">
         <div class="container px-5 my-5">
             <div class="row gx-5">
-                <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="col-lg-3">
                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                     <h2 class="h4 fw-bolder">Featured title</h2>
                     <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
@@ -36,17 +36,24 @@
                         <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                    <h2 class="h4 fw-bolder">Featured title</h2>
-                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                    <a class="text-decoration-none" href="#!">
-                        Call to action
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
+                <div class="col-lg-6">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                    <h2 class="h4 fw-bolder">Feed </h2>
+
+                    <div class="mb-3">
+                        <textarea class="form-control form-textarea color-gray-100" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn color-blue-100 text-primary" onclick="appendFeeeeeeeeeeed()">피드 작성</button>
+                    </div>
+
+                    <pre id="logs" style="white-space: pre-wrap;">
+
+                    </pre>
                 </div>
-                <div class="col-lg-4">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                <div class="col-lg-3">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                     <h2 class="h4 fw-bolder">Featured title</h2>
                     <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
                     <a class="text-decoration-none" href="#!">
@@ -64,7 +71,10 @@
     <%- include('./article/footer')%>
 
     <script>
+        // Test Ground
+
         //getFeed(1)
+        getFeeeeeeeeeeed()
         try {
             let token = getToken('user')
             if (checkToken(token)) {
@@ -73,6 +83,27 @@
             }
         } catch (error) {
             
+        }
+
+        
+
+        async function getFeeeeeeeeeeed() {
+            let data = await getFeedRange(0)
+
+            document.querySelector('#logs').innerHTML = JSON.stringify(data)
+        }
+
+        async function appendFeeeeeeeeeeed() {
+            await insertFeed(document.querySelector("#exampleFormControlTextarea1").value)
+
+            setTimeout(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: '피드 작성 완료',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+            }, 300);
         }
     </script>
 

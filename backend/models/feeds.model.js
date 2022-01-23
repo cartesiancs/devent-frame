@@ -10,7 +10,7 @@ export async function getFeedsRange(range) {
                 if (err) {
                     resolve({status:0})
                 }
-                resolve(result)
+                resolve({status:1, result:result})
             });
         })
 
