@@ -60,3 +60,30 @@ export async function insertFeedData(insertData) {
         throw Error(err)
     }
 }
+
+export async function deleteFeedData(check) {
+    try {
+        let { feed_idx, owner } = check;
+        let deleteFeeds = "DELETE FROM feeds WHERE idx = ? AND feed_owner = ?";
+        const data = await new Promise((resolve, reject) => {
+            conn.query(deleteFeeds, [feed_idx, owner], function(err, result) {
+                if (err) {
+                    resolve({status:0})
+                }
+                if (result.affectedRows >= 1) {
+                    resolve({status:1})
+
+                } else {
+                    resolve({status:0})
+
+                }
+            });
+        })
+
+        return data
+    } catch (err) {
+        console.log(err)
+        throw Error(err)
+    }
+}
+deleteFeedData

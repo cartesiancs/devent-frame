@@ -1,4 +1,4 @@
-import { getFeedsRange, getFeedsIdx, insertFeedData } from '../models/feeds.model.js';
+import { getFeedsRange, getFeedsIdx, insertFeedData, deleteFeedData } from '../models/feeds.model.js';
 import { transformTokentoUserid } from '../services/users.serv.js'
 import sanitizeHtml from 'sanitize-html';
 import dayjs from 'dayjs'
@@ -57,4 +57,20 @@ export async function insertFeed (req, res) {
 }
 
 
+export async function deleteFeed (req, res) {
+    let token = req.headers['x-access-token'];
 
+    let feed_idx = req.params.idx;
+    let owner = await transformTokentoUserid(token);
+
+
+    let check = { feed_idx, owner };
+
+    let data = await deleteFeedData(check)
+
+    if (data.status == 1) {
+        res.status(200).json({status:1})
+    } else {
+        res.status(401).json({status:0})
+    }
+}

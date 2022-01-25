@@ -57,3 +57,24 @@ async function insertFeed(content) {
     
     console.log(data)
 }
+
+async function deleteSendFeed(idx) {
+
+    let response = await fetch("/api/feeds/"+idx, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "x-access-token": getToken('user')
+        }
+
+    });
+
+    let data = response.json();
+    return data;
+}
+
+async function deleteFeed(idx) {
+    let data = await deleteSendFeed(idx)
+    
+    console.log(data)
+}
