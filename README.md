@@ -22,3 +22,8 @@ npm install
 ```
 npm start
 ```
+
+
+## RestAPI 문서
+
+[Notion Page](https://freezing-pluto-006.notion.site/Freme-Project-RESTAPI-325fdb5302934c59b564b249138fe722)
