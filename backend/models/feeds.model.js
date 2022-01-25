@@ -86,4 +86,29 @@ export async function deleteFeedData(check) {
         throw Error(err)
     }
 }
-deleteFeedData
+
+export async function updateFeedData(updateData) {
+    try {
+        let { feed_update_idx, feed_update_content, owner } = updateData;
+        let updateFeeds = "UPDATE feeds SET feed_content = ? WHERE idx = ? AND feed_owner = ?";
+        const data = await new Promise((resolve, reject) => {
+            conn.query(updateFeeds, [feed_update_content, feed_update_idx, owner], function(err, result) {
+                if (err) {
+                    resolve({status:0})
+                }
+                if (result.affectedRows >= 1) {
+                    resolve({status:1})
+
+                } else {
+                    resolve({status:0})
+
+                }
+            });
+        })
+
+        return data
+    } catch (err) {
+        console.log(err)
+        throw Error(err)
+    }
+}
