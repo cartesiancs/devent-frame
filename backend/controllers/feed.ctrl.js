@@ -82,9 +82,7 @@ export async function updateFeed (req, res) {
     let feed_update_content = req.body.content;
     let owner = await transformTokentoUserid(token);
 
-
     let updateData = { feed_update_idx, feed_update_content, owner };
-    console.log(updateData)
 
     let data = await updateFeedData(updateData)
 
