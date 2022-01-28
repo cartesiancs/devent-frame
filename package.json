@@ -1,11 +1,11 @@
 {
+  "type": "module",
   "name": "frame1",
   "version": "1.0.2",
-  "type": "module",
   "description": "Nodejs Frame Project",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./backend/tests/users.test.js",
     "start": "node app.js"
   },
   "repository": {
@@ -29,5 +29,8 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "sanitize-html": "^2.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^9.2.0"
   }
 }

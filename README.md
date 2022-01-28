@@ -9,6 +9,7 @@
 * [x] RESTApi 설계
 * [x] 사용자 탈퇴
 * [x] 피드(게시판) CRUD
+* [x] mocha 테스트 코드 작성
 
 ## 실행
 
@@ -20,7 +21,12 @@ npm install
 **실행**
 
 ```
-npm start
+npm run start
+```
+**테스트**
+
+```
+npm run test
 ```
 
 
