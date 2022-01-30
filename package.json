@@ -5,7 +5,7 @@
   "description": "Nodejs Frame Project",
   "main": "app.js",
   "scripts": {
-    "test": "mocha ./backend/tests/users.test.js",
+    "test": "mocha",
     "start": "node app.js"
   },
   "repository": {
@@ -23,7 +23,6 @@
     "body-parser": "^1.19.1",
     "cookie-parser": "^1.4.6",
     "dayjs": "^1.10.7",
-    "ejs": "^3.1.6",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "jsonwebtoken": "^8.5.1",
