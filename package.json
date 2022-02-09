@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DipokalLab/frame1.git"
+    "url": "git+https://github.com/Team-DeVent/devent-frame"
   },
   "author": "dipokalhhj",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DipokalLab/frame1/issues"
+    "url": "https://github.com/Team-DeVent/devent-frame/issues"
   },
-  "homepage": "https://github.com/DipokalLab/frame1#readme",
+  "homepage": "https://github.com/Team-DeVent/devent-frame#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
