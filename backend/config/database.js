@@ -1,6 +1,6 @@
 export default 
 {
-    "username": "roots",
+    "username": "root",
     "password": "testtesttest",
     "host": "localhost",
     "port": 3306,
