@@ -72,8 +72,12 @@ export async function checkAvailableUser(user) {
         let is_duplicate = await checkDuplicateUser(user)
 
         let pattern_spc = /[^\w]/;
-    
-        if (pattern_spc.test(String(user_id)) == true) {
+        let pattern_email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if (pattern_spc.test(String(user_id)) == true || user_id == '' ) {
+            is_available = 0
+        } 
+        if (pattern_email.test(String(user_email)) == false) {
             is_available = 0
         } 
         if (is_duplicate.cnt >= 1) {

@@ -34,7 +34,7 @@ export async function create (req, res) {
         let createdToken = await grantToken(user_id);
         res.status(200).json({status:1, token:createdToken})
     } else {
-        res.status(200).json({status:0})
+        res.status(401).json({status:0})
     }
 
 }

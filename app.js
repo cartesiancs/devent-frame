@@ -8,9 +8,10 @@ async function startExpressServer() {
   
     await loaderExpress.init(app);
   
-    app.listen(9000, err => {
+    return app.listen(9000, err => {
         console.log(`[ + ] The server is running.`);
     });
 }
   
-startExpressServer();
+let server = await startExpressServer();
+export { server }
