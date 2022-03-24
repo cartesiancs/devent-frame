@@ -19,8 +19,8 @@ console.log(mockuser)
 
 
 describe('Users', () => {
-  describe('/api/users', () => {
-    it('가입 가능 확인', () => {
+  describe('POST /api/users', () => {
+    it('가입 가능 확인', (done) => {
       let params = {
         user_id: btoa(mockuser.user_id),
         user_email: btoa(mockuser.user_email),
@@ -34,14 +34,15 @@ describe('Users', () => {
       .end((err, res) => { 
         res.should.have.status(200); 
         res.body.status.should.equal(1);  
+        done();
         //console.log(res.body)      
       });
     });
 
-    it('가입 특수문자 확인', () => {
+    it('가입 특수문자 확인', (done) => {
       let params = {
-        user_id: "aa__!*PB**(_",
-        user_email: mockuser.user_email,
+        user_id:  btoa("aa__!*PB**(_"),
+        user_email: btoa(mockuser.user_email),
         user_pw: btoa(mockuser.user_pw)
       }
 
@@ -50,14 +51,33 @@ describe('Users', () => {
       .send(params)
       .end((err, res) => { 
         res.should.have.status(200); 
-        res.body.status.should.equal(0);        
+        res.body.status.should.equal(0);  
+        done();
+      });
+    });
+
+    it('중복 가입 확인', (done) => {
+      let params = {
+        user_id: btoa(mockuser.user_id),
+        user_email: btoa(mockuser.user_email),
+        user_pw: btoa(mockuser.user_pw)
+      }
+
+      chai.request(server) 
+      .post('/api/users') 
+      .send(params)
+      .end((err, res) => { 
+        res.should.have.status(200); 
+        res.body.status.should.equal(0);  
+        done();
+        //console.log(res.body)      
       });
     });
 
   });
 
   describe('/api/auth/login', () => {
-    it('로그인 가능 확인', () => {
+    it('로그인 가능 확인', (done) => {
       let params = {
         user_id: btoa(mockuser.user_id),
         user_pw: btoa(mockuser.user_pw)
@@ -68,10 +88,12 @@ describe('Users', () => {
       .send(params)
       .end((err, res) => { 
         res.should.have.status(200); 
-        res.body.status.should.equal(1);   
+        res.body.status.should.equal(1); 
+        done();  
       });
     });
-    it('로그인 정보 확인', () => {
+
+    it('로그인 정보 확인', (done) => {
       let params = {
         user_id: btoa('noneid'), 
         user_pw: btoa('nonepass')
@@ -82,12 +104,14 @@ describe('Users', () => {
       .send(params)
       .end((err, res) => { 
         res.should.have.status(401); 
-        res.body.status.should.equal(0);        
+        res.body.status.should.equal(0);    
+        done();    
       });
     });
-    it('로그인 특수문자 검증', () => {
+
+    it('로그인 특수문자 검증', (done) => {
       let params = {
-        user_id: 'a!a__+a', 
+        user_id: btoa('a!a__+a'), 
         user_pw: btoa('sdvwes&^*(#')
       }
 
@@ -97,8 +121,8 @@ describe('Users', () => {
       .end((err, res) => { 
         res.should.have.status(401); 
         res.body.status.should.equal(0);
-        
+        done();
       });
-    });  
+    });
   });
 });

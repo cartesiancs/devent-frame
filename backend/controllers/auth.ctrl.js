@@ -1,13 +1,5 @@
-import jwt from 'jsonwebtoken';
-import data from '../config/jwt.js';
-
 import { comparePassword, grantToken, transformTokentoUserid } from '../services/users.serv.js';
-
-
 import { loadUserinfo } from '../models/users.model.js';
-
-let jwtSecret = data.secret;
-
 
 export async function login (req, res) {
     try {

@@ -1,18 +1,11 @@
-import jwt from 'jsonwebtoken';
-import data from '../config/jwt.js';
-
 import { encryptPassword, checkAvailableUser, grantToken } from '../services/users.serv.js';
-
 import { createUser, loadUserinfo, grantAuthorization } from '../models/users.model.js';
-
-let jwtSecret = data.secret;
 
 
 export async function create (req, res) {
     let user_id = Buffer.from(req.body.user_id, "base64").toString('utf8');
     let user_pw = Buffer.from(req.body.user_pw, "base64").toString('utf8');
     let user_email = Buffer.from(req.body.user_email, "base64").toString('utf8');
-
 
     let is_available = await checkAvailableUser({user_id, user_email})
 
