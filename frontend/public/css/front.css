@@ -23,3 +23,11 @@
 .form-textarea{
     border: none !important;
 }
+
+body.swal2-height-auto {
+    height: initial !important;
+}
+
+.swal2-container.swal2-center>.swal2-popup {
+    border-radius: 10px;
+}
