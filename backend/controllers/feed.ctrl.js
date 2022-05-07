@@ -1,4 +1,11 @@
-import { getFeedsRange, getFeedsIdx, insertFeedData, deleteFeedData, updateFeedData } from '../models/feeds.model.js';
+import { 
+    getFeedsRange, 
+    getFeedsIdx, 
+    insertFeedData, 
+    deleteFeedData, 
+    updateFeedData 
+} from '../models/feeds.model.js';
+
 import { transformTokentoUserid } from '../services/users.serv.js'
 import sanitizeHtml from 'sanitize-html';
 import dayjs from 'dayjs'
@@ -7,8 +14,19 @@ import dayjs from 'dayjs'
 
 
 export async function getFeed (req, res) {
-    let idx = req.params.idx;
-    let data = await getFeedsIdx(idx)
+    let idx = Number(req.params.idx) || -1;
+    let is_range = String(req.query.isrange) || 'false'
+
+    let idx_range_max = Number(req.query.range) || 0;
+    let idx_start = idx || -1;
+    let idx_end = idx_start + idx_range_max || idx;
+    let data;
+
+    if (is_range == 'true') {
+        data = await getFeedsRange({ idx_start, idx_end })
+    } else {
+        data = await getFeedsIdx(idx)
+    }
 
     if (Array.isArray(data) && data.length === 0) {
         res.status(404).json({data:'', msg:'Not Found'})

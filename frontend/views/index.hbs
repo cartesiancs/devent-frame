@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-blue" onclick="appendFeeeeeeeeeeed()">피드 작성</button>
+                        <button class="btn btn-blue" onclick="append()">피드 작성</button>
                     </div>
 
                     <pre id="logs" style="white-space: pre-wrap;">
@@ -93,13 +93,17 @@
         
 
         async function get() {
-            let data = await feeds.select(0)
+            let data = await feeds.select(1, {
+                isrange: 'true',
+                range: 2
+            })
 
             document.querySelector('#logs').innerHTML = JSON.stringify(data)
         }
 
-        async function appendFeeeeeeeeeeed() {
-            await insertFeed(document.querySelector("#exampleFormControlTextarea1").value)
+        async function append() {
+            content = document.querySelector("#exampleFormControlTextarea1").value
+            await feeds.insert(content)
 
             setTimeout(() => {
                 Swal.fire({

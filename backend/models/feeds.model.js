@@ -2,11 +2,11 @@ import conn from '../databases/db.js'
 
 export async function getFeedsRange(range) {
     try {
-        let { start, end } = range;
+        let { idx_start, idx_end } = range;
 
         let selectFeeds = "SELECT * FROM feeds WHERE idx BETWEEN ? AND ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(selectFeeds, [start, end], function(err, result) {
+            conn.query(selectFeeds, [idx_start, idx_end], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 }

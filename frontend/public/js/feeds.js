@@ -4,8 +4,11 @@ class Feeds {
         this.token = token
     }
 
-    async select(idx) {
-        let response = await fetch("/api/feeds/"+idx, {
+    async select(feed_idx, fetch_params) {
+        let params = fetch_params || {}
+        let params_string = new URLSearchParams(params).toString();
+
+        let response = await fetch(`/api/feeds/${feed_idx}?${params_string}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
