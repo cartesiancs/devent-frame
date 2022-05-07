@@ -39,6 +39,7 @@ describe('Users', () => {
       });
     });
 
+
     it('가입 특수문자 확인', (done) => {
       let params = {
         user_id:  btoa("aa__!*PB**(_"),

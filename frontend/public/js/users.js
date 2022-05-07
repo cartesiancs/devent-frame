@@ -237,3 +237,13 @@ async function checkAuthMe() {
         console.log(user_data)
     } 
 }
+
+
+async function logout() {
+    try {
+        document.cookie = 'user=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+        location.href = '/'
+    } catch (error) {
+        return 0
+    }
+}

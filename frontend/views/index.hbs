@@ -76,13 +76,13 @@
     {{> footer}}
 
     <script>
-        // Test Ground
+        let token = new Token()
+        let feeds = new Feeds(token.get('user'))
 
-        //getFeed(1)
-        getFeeeeeeeeeeed()
+        get()
         try {
-            let token = getToken('user')
-            if (checkToken(token)) {
+            let user_token = token.get('user')
+            if (token.check(user_token).is_vaild) {
                 document.querySelector("#login_box").innerHTML = `<button class="btn btn-red font-weight-md btn-lg px-4 " onclick="logout()"><i class="fas fa-user-minus"></i> 로그아웃</button>`
                 document.querySelector("#intro").innerText = '사용자로 로그인 완료'
             }
@@ -92,8 +92,8 @@
 
         
 
-        async function getFeeeeeeeeeeed() {
-            let data = await getFeedRange(0)
+        async function get() {
+            let data = await feeds.select(0)
 
             document.querySelector('#logs').innerHTML = JSON.stringify(data)
         }
