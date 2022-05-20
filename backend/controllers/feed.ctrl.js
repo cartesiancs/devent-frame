@@ -1,3 +1,7 @@
+/** 
+ * @namespace ControllerFeed
+ */
+
 import { 
     getFeedsRange, 
     getFeedsIdx, 
@@ -11,7 +15,14 @@ import sanitizeHtml from 'sanitize-html';
 import dayjs from 'dayjs'
 
 
-
+/**
+ * 
+ * @function
+ * @param req.body.idx {Number} The feed index.
+ * @param req.body.isrange {String} The parameters for repeat verification
+ * @param req.body.range {String} The range feed index.
+ * @memberof ControllerFeed
+ */
 
 export async function getFeed (req, res) {
     let idx = Number(req.params.idx) || -1;
@@ -35,21 +46,13 @@ export async function getFeed (req, res) {
     }
 }
 
-export async function getFeedRange (req, res) {
-    let multiple_range = 10;
-    let get_start = Number(req.query.start);
-
-    let start = Number.isInteger(get_start) == true ? get_start : 0
-    let end = start+multiple_range;
-
-    let data = await getFeedsRange({ start, end })
-
-    if (data.status == 1) {
-        res.status(200).json({data:data.result})
-    } else {
-        res.status(404).json({data:'', msg:'Not Found'})
-    }
-}
+/**
+ * 
+ * @function
+ * @param req.body.content {String} The feed String.
+ * @param req.headers[].x-access-token {String} The JWT token.
+ * @memberof ControllerFeed
+ */
 
 export async function insertFeed (req, res) {
     let token = req.headers['x-access-token'];
@@ -61,7 +64,6 @@ export async function insertFeed (req, res) {
     let type = 1;
 
     let insert_data = { content, owner, date, type };
-
     let data = await insertFeedData(insert_data)
 
     if (data.status == 1) {
@@ -71,6 +73,13 @@ export async function insertFeed (req, res) {
     }
 }
 
+/**
+ * 
+ * @function
+ * @param req.params.idx {Number} The feed idx for delete.
+ * @param req.headers[].x-access-token {String} The JWT token.
+ * @memberof ControllerFeed
+ */
 
 export async function deleteFeed (req, res) {
     let token = req.headers['x-access-token'];
@@ -87,6 +96,15 @@ export async function deleteFeed (req, res) {
         res.status(401).json({status:0})
     }
 }
+
+/**
+ * 
+ * @function
+ * @param req.params.idx {Number} The feed idx for delete.
+ * @param req.body.content {String} The updated feed String.
+ * @param req.headers[].x-access-token {String} The JWT token.
+ * @memberof ControllerFeed
+ */
 
 export async function updateFeed (req, res) {
     let token = req.headers['x-access-token'];

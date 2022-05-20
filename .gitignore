@@ -1,2 +1,4 @@
 /node_modules
 /backend/config/
+/doc
+.DS_Store
