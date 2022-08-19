@@ -93,7 +93,7 @@ export async function checkAvailableUser(user) {
 export async function transformTokentoUserid(token) {
     try {
         const token_data = await new Promise((resolve, reject) => {
-            let decoded = jwt.verify(token, jwtSecret);
+            let decoded = jwt.verify(token, TOKEN_SECRET);
             resolve(decoded.user_id)
         })
       

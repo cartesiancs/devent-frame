@@ -42,7 +42,13 @@
 
 
     {{> footer}}
-    <script src="/js/users.js"></script>
+
+    <script>
+      let users = new main.Users()
+      function userLogin() {
+        users.login()
+      }
+    </script>
 
   </body>
 </html>

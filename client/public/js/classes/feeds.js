@@ -1,5 +1,5 @@
 
-class Feeds {
+export default class Feeds {
     constructor(token) {
         this.token = token
     }
