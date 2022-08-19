@@ -27,14 +27,10 @@ npm run start
 npm run test
 ```
 
-**jsdoc**
+## Version
 
-```
-npm run jsdoc
-```
+#### 1.0
+NodeJS 기반 유저 핸들링, CRUD 부문 확장성에 초점을 기울임
 
-
-
-## RestAPI 문서
-
-[Notion Page](https://freezing-pluto-006.notion.site/Freme-Project-RESTAPI-325fdb5302934c59b564b249138fe722)
+#### 2.0
+TypeScript 마이그레이션, 코드 개선등 유지 및 관리에 신경씀

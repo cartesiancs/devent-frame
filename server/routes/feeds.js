@@ -1,11 +1,11 @@
 import { Router } from 'express';
 const router = Router();
 
-import { getFeed, getFeedRange, insertFeed, deleteFeed, updateFeed } from '../controllers/feed.ctrl.js';
+import { getFeed, insertFeed, deleteFeed, updateFeed } from '../controllers/feed.ctrl.js';
 
 
 router.get('/:idx', getFeed);
-router.get('/', getFeedRange);
+router.get('/', getFeed);
 
 router.post('/', insertFeed);
 router.delete('/:idx', deleteFeed);
