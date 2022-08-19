@@ -1,6 +1,4 @@
-/** 
- * @namespace ControllerFeed
- */
+
 
 import { 
     getFeedsRange, 
@@ -14,15 +12,6 @@ import { transformTokentoUserid } from '../services/users.serv.js'
 import sanitizeHtml from 'sanitize-html';
 import dayjs from 'dayjs'
 
-
-/**
- * 
- * @function
- * @param req.body.idx {Number} The feed index.
- * @param req.body.isrange {String} The parameters for repeat verification
- * @param req.body.range {String} The range feed index.
- * @memberof ControllerFeed
- */
 
 export async function getFeed (req, res) {
     let idx = Number(req.params.idx) || -1;
@@ -46,13 +35,6 @@ export async function getFeed (req, res) {
     }
 }
 
-/**
- * 
- * @function
- * @param req.body.content {String} The feed String.
- * @param req.headers[].x-access-token {String} The JWT token.
- * @memberof ControllerFeed
- */
 
 export async function insertFeed (req, res) {
     let token = req.headers['x-access-token'];
@@ -73,13 +55,6 @@ export async function insertFeed (req, res) {
     }
 }
 
-/**
- * 
- * @function
- * @param req.params.idx {Number} The feed idx for delete.
- * @param req.headers[].x-access-token {String} The JWT token.
- * @memberof ControllerFeed
- */
 
 export async function deleteFeed (req, res) {
     let token = req.headers['x-access-token'];
@@ -97,14 +72,6 @@ export async function deleteFeed (req, res) {
     }
 }
 
-/**
- * 
- * @function
- * @param req.params.idx {Number} The feed idx for delete.
- * @param req.body.content {String} The updated feed String.
- * @param req.headers[].x-access-token {String} The JWT token.
- * @memberof ControllerFeed
- */
 
 export async function updateFeed (req, res) {
     let token = req.headers['x-access-token'];

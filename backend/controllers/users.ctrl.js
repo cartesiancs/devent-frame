@@ -1,8 +1,4 @@
 
-/** 
- * @namespace ControllerUser
- */
-
 import { 
     encryptPassword, 
     checkAvailableUser, 
@@ -16,14 +12,6 @@ import {
 } from '../models/users.model.js';
 
 
-/**
- * 
- * @function
- * @param req.body.user_id {String} The user id encoded base64.
- * @param req.body.user_pw {String} The user password encoded base64.
- * @param req.body.user_email {String} The user email encoded base64.
- * @memberof ControllerUser
- */
 
 export async function create (req, res) {
     let user_id = Buffer.from(req.body.user_id, "base64").toString('utf8');
@@ -56,13 +44,6 @@ export async function create (req, res) {
 }
 
 
-/**
- * 
- * @function
- * @param req.params.user_id {String} The user id.
- * @memberof ControllerUser
- */
-
 export async function deleteUserInfo (req, res) {
     let user_id = req.params.user_id;
     let is_revoke = await grantAuthorization(user_id, 0);
@@ -75,13 +56,6 @@ export async function deleteUserInfo (req, res) {
     }
 }
 
-
-/**
- * 
- * @function
- * @param req.params.user_id {String} The user id.
- * @memberof ControllerUser
- */
 
 export async function getUserInfo (req, res) {
     try {

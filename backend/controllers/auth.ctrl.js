@@ -1,22 +1,6 @@
-/** 
- * @file This controller file for user confirmation.
- * @copyright Team-DeVent 2022
- * @namespace ControllerAuth
- */
-
-
 import { comparePassword, grantToken, transformTokentoUserid } from '../services/users.serv.js';
 import { loadUserinfo } from '../models/users.model.js';
 
-/**
- * 
- * @function
- * @param req {Object} The request.
- * @param res {Object} The response.
- * @param req.body.user_id {String} The user id encoded base64.
- * @param req.body.user_pw {String} The user password encoded base64.
- * @memberof ControllerAuth
- */
 
 export async function login (req, res) {
     try {
@@ -38,15 +22,6 @@ export async function login (req, res) {
         res.status(401).json({status:0})
     }
 }
-
-/**
- * 
- * @function
- * @param req {Object} The request.
- * @param res {Object} The response.
- * @param req.headers[].token {String} The JWT token.
- * @memberof ControllerAuth
- */
 
 export async function me (req, res) {
     let token = req.headers['x-access-token'];
