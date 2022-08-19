@@ -2,11 +2,11 @@ import conn from '../databases/db.js'
 
 export async function getFeedsRange(range) {
     try {
-        let { idx_start, idx_end } = range;
+        let { idxStart, idxEnd } = range;
 
         let selectFeeds = "SELECT * FROM feeds WHERE idx BETWEEN ? AND ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(selectFeeds, [idx_start, idx_end], function(err, result) {
+            conn.query(selectFeeds, [idxStart, idxEnd], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 }
@@ -61,12 +61,12 @@ export async function insertFeedData(insertData) {
     }
 }
 
-export async function deleteFeedData(check) {
+export async function deleteFeedData(deleteFeed) {
     try {
-        let { feed_idx, owner } = check;
+        let { idxFeed, owner } = deleteFeed;
         let deleteFeeds = "DELETE FROM feeds WHERE idx = ? AND feed_owner = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(deleteFeeds, [feed_idx, owner], function(err, result) {
+            conn.query(deleteFeeds, [idxFeed, owner], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 }
@@ -89,10 +89,10 @@ export async function deleteFeedData(check) {
 
 export async function updateFeedData(updateData) {
     try {
-        let { feed_update_idx, feed_update_content, owner } = updateData;
+        let { idxFeed, contentFeed, owner } = updateData;
         let updateFeeds = "UPDATE feeds SET feed_content = ? WHERE idx = ? AND feed_owner = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(updateFeeds, [feed_update_content, feed_update_idx, owner], function(err, result) {
+            conn.query(updateFeeds, [contentFeed, idxFeed, owner], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 }

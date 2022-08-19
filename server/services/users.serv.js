@@ -4,15 +4,14 @@ import jwt from 'jsonwebtoken';
 import data from '../config/jwt.js';
 import { checkDuplicateUser } from '../models/users.model.js';
 
+const SALT_ROUNDS = 10;
+const TOKEN_SECRET = data.secret;
 
-let saltRounds = 10;
-let jwtSecret = data.secret;
-
-export async function encryptPassword(user_pw) {
+export async function encryptPassword(userPassword) {
     try {
       
         const hashedPassword = await new Promise((resolve, reject) => {
-          bcrypt.hash(user_pw, saltRounds, function(err, hash) {
+          bcrypt.hash(userPassword, SALT_ROUNDS, function(err, hash) {
             if (err) reject(err)
             resolve(hash)
           });
@@ -25,11 +24,11 @@ export async function encryptPassword(user_pw) {
     }
 }
 
-export async function comparePassword(user_pw, user_hash_pw) {
+export async function comparePassword(userPassword, userPasswordHash) {
     try {
-        let hash = user_hash_pw.replace('$2y$', '$2a$');
+        let hash = userPasswordHash.replace('$2y$', '$2a$');
         const isCorrect = await new Promise((resolve, reject) => {
-            bcrypt.compare(user_pw, hash, function(err, correct) {
+            bcrypt.compare(userPassword, hash, function(err, correct) {
                 if (correct == true) {
                     resolve({
                         status: 1
@@ -47,12 +46,12 @@ export async function comparePassword(user_pw, user_hash_pw) {
     }
 }
 
-export async function grantToken(user_id) {
+export async function grantToken(userId) {
     try {
         const jwt_token = await new Promise((resolve, reject) => {
             let token = jwt.sign({
-                user_id: user_id
-            }, jwtSecret, {
+                user_id: userId
+            }, TOKEN_SECRET, {
                 expiresIn: '7d'
             });
             resolve(token)
@@ -67,24 +66,24 @@ export async function grantToken(user_id) {
 
 export async function checkAvailableUser(user) {
     try {
-        let { user_id, user_email } = user
-        let is_available = 1
-        let is_duplicate = await checkDuplicateUser(user)
+        let { userId, userEmail } = user
+        let isAvailable = 1
+        let isDuplicate = await checkDuplicateUser(user)
 
-        let pattern_spc = /[^\w]/;
-        let pattern_email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        let patternSpc = /[^\w]/;
+        let patternEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        if (pattern_spc.test(String(user_id)) == true || user_id == '' ) {
-            is_available = 0
+        if (patternSpc.test(String(userId)) == true || userId == '' ) {
+            isAvailable = 0
         } 
-        if (pattern_email.test(String(user_email)) == false) {
-            is_available = 0
+        if (patternEmail.test(String(userEmail)) == false) {
+            isAvailable = 0
         } 
-        if (is_duplicate.cnt >= 1) {
-            is_available = 0
+        if (isDuplicate.cnt >= 1) {
+            isAvailable = 0
         }
       
-        return is_available
+        return isAvailable
     } catch (err) {
         console.log(err)
         throw Error(err)

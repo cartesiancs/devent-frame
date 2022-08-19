@@ -12,7 +12,7 @@ const check = (req, res, next) => {
   
 
     let decoded = jwt.verify(token, jwtSecret);
-    let user_id = decoded.user_id;
+    let userId = decoded.user_id;
     next()
   } catch (error) {
     res.status(401).json({status:0,msg:"증명 에러"})
