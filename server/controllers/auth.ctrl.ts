@@ -8,12 +8,12 @@ export async function login (req, res) {
         let userPassword = Buffer.from(req.body.user_pw, "base64").toString('utf8');
     
         let userInfo = await userModel.loadUserinfo(userId)
-        let result = await comparePassword(userPassword, userInfo.user_pw)
+        let result: any = await comparePassword(userPassword, userInfo.user_pw)
         
         if (result.status == 1 && userInfo.user_auth == 1) {
             let created_token = await grantToken(userId);
             res.status(200).json({status:1, token:created_token})
-        } else if (data.user_auth == 0) {
+        } else if (userInfo.user_auth == 0) {
             res.status(401).json({status: -1})
         } else {
             res.status(401).json({status: 0})

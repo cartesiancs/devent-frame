@@ -28,7 +28,7 @@ export async function create (req, res) {
     let user = { userId, userPasswordHash, userEmail }
     let data = await userModel.createUser(user)
 
-    let is_grant = await userModel.grantAuthorization(userId, 1);
+    let is_grant: any = await userModel.grantAuthorization(userId, 1);
 
     if (is_grant.status == 1) {
         let createdToken = await grantToken(userId);
@@ -42,7 +42,7 @@ export async function create (req, res) {
 
 export async function deleteUserInfo (req, res) {
     let userId = req.params.user_id;
-    let isRevoke = await userModel.grantAuthorization(userId, 0);
+    let isRevoke: any = await userModel.grantAuthorization(userId, 0);
 
     if (isRevoke.status == 1) {
         res.clearCookie('user')

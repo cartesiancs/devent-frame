@@ -4,7 +4,7 @@ import * as feedModel from '../models/feeds.model.js';
 
 import { transformTokentoUserid } from '../services/users.serv.js'
 import sanitizeHtml from 'sanitize-html';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 
 export async function getFeed (req, res) {
@@ -40,7 +40,7 @@ export async function insertFeed (req, res) {
     let type = 1;
 
     let insertFeed = { content, owner, date, type };
-    let data = await feedModel.insertFeedData(insertFeed)
+    let data: any = await feedModel.insertFeedData(insertFeed)
 
     if (data.status == 1) {
         res.status(200).json({status:1})
@@ -57,7 +57,7 @@ export async function deleteFeed (req, res) {
     let owner = await transformTokentoUserid(token);
 
     let deleteFeed = { idxFeed, owner };
-    let data = await feedModel.deleteFeedData(deleteFeed)
+    let data: any = await feedModel.deleteFeedData(deleteFeed)
 
     if (data.status == 1) {
         res.status(200).json({status:1})
@@ -76,7 +76,7 @@ export async function updateFeed (req, res) {
 
     let updateFeed = { idxFeed, contentFeed, owner };
 
-    let data = await feedModel.updateFeedData(updateFeed)
+    let data: any = await feedModel.updateFeedData(updateFeed)
 
     if (data.status == 1) {
         res.status(200).json({status:1})

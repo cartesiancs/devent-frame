@@ -61,16 +61,18 @@ export async function insertFeedData(insertData) {
     }
 }
 
-export async function deleteFeedData(deleteFeed) {
+export async function deleteFeedData(deleteFeed): Promise<{ }> {
     try {
         let { idxFeed, owner } = deleteFeed;
         let deleteFeeds = "DELETE FROM feeds WHERE idx = ? AND feed_owner = ?";
         const data = await new Promise((resolve, reject) => {
             conn.query(deleteFeeds, [idxFeed, owner], function(err, result) {
+                const returnResult: any = result;
+
                 if (err) {
                     resolve({status:0})
                 }
-                if (result.affectedRows >= 1) {
+                if (returnResult.affectedRows >= 1) {
                     resolve({status:1})
 
                 } else {
@@ -93,10 +95,12 @@ export async function updateFeedData(updateData) {
         let updateFeeds = "UPDATE feeds SET feed_content = ? WHERE idx = ? AND feed_owner = ?";
         const data = await new Promise((resolve, reject) => {
             conn.query(updateFeeds, [contentFeed, idxFeed, owner], function(err, result) {
+                const returnResult: any = result;
+
                 if (err) {
                     resolve({status:0})
                 }
-                if (result.affectedRows >= 1) {
+                if (returnResult.affectedRows >= 1) {
                     resolve({status:1})
 
                 } else {

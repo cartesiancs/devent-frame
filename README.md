@@ -1,6 +1,6 @@
 ![head](./head.png)
 
-# devent-frame
+# devent-frame-v2
 노드 기반 템플릿 프로젝트
 
 ## 요약
@@ -26,11 +26,3 @@ npm run start
 ```
 npm run test
 ```
-
-## Version
-
-#### 1.0
-NodeJS 기반 유저 핸들링, CRUD 부문 확장성에 초점을 기울임
-
-#### 2.0
-TypeScript 마이그레이션, 코드 개선등 유지 및 관리에 신경씀

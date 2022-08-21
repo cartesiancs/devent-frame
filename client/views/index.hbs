@@ -97,7 +97,7 @@
         async function get() {
             let data = await feeds.select(1, {
                 isrange: 'true',
-                range: 2
+                range: 20
             })
 
             document.querySelector('#logs').innerHTML = JSON.stringify(data)

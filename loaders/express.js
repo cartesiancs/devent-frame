@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import { engine } from 'express-handlebars';
 
 
-import apiRouter from '../server/api.js';
+import apiRouter from '../dist/api.js';
 import mainRouter from '../client/routes/main.js';
 
 export async function init (app) {
