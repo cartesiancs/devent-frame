@@ -1,6 +1,6 @@
 ![head](./head.png)
 
-# devent-frame
+# devent-frame-v2
 노드 기반 템플릿 프로젝트
 
 ## 요약
@@ -26,15 +26,3 @@ npm run start
 ```
 npm run test
 ```
-
-**jsdoc**
-
-```
-npm run jsdoc
-```
-
-
-
-## RestAPI 문서
-
-[Notion Page](https://freezing-pluto-006.notion.site/Freme-Project-RESTAPI-325fdb5302934c59b564b249138fe722)
