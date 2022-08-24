@@ -34,8 +34,10 @@ export async function insertFeed (req, res) {
     let token = req.headers['x-access-token'];
     let now = dayjs();
 
+    let getUserId = await transformTokentoUserid(token);
+
     let content = sanitizeHtml(req.body.content);
-    let owner = await transformTokentoUserid(token);
+    let owner = getUserId.userId
     let date = now.format("YYYY.MM.DD.HH.mm.ss"); 
     let type = 1;
 
@@ -54,7 +56,9 @@ export async function deleteFeed (req, res) {
     let token = req.headers['x-access-token'];
 
     let idxFeed = req.params.idx;
-    let owner = await transformTokentoUserid(token);
+    let getUserId = await transformTokentoUserid(token);
+
+    let owner =  getUserId.userId
 
     let deleteFeed = { idxFeed, owner };
     let data: any = await feedModel.deleteFeedData(deleteFeed)
@@ -72,7 +76,8 @@ export async function updateFeed (req, res) {
 
     let idxFeed = Number(req.params.idx);
     let contentFeed = req.body.content;
-    let owner = await transformTokentoUserid(token);
+    let getUserId = await transformTokentoUserid(token);
+    let owner = getUserId.userId
 
     let updateFeed = { idxFeed, contentFeed, owner };
 

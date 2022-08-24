@@ -23,7 +23,8 @@ export async function create (req, res) {
         return res.status(200).json({status:0})
     }
 
-    let userPasswordHash = await encryptPassword(userPassword)
+    let getUserPasswordHash = await encryptPassword(userPassword)
+    let userPasswordHash = getUserPasswordHash.userPasswordHash
 
     let user = { userId, userPasswordHash, userEmail }
     let data = await userModel.createUser(user)
@@ -31,7 +32,8 @@ export async function create (req, res) {
     let is_grant: any = await userModel.grantAuthorization(userId, 1);
 
     if (is_grant.status == 1) {
-        let createdToken = await grantToken(userId);
+        let getJwtToken = await grantToken(userId);
+        let createdToken = getJwtToken.userJwtToken
         res.status(200).json({status:1, token: createdToken})
     } else {
         res.status(401).json({status:0})

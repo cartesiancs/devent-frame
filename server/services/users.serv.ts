@@ -7,13 +7,23 @@ import { checkDuplicateUser } from '../models/users.model.js';
 const SALT_ROUNDS = 10;
 const TOKEN_SECRET = data.secret;
 
+interface ReturnValue {
+    status: number;
+    userId?: string;
+    userPasswordHash?: string;
+    userJwtToken?: string;
+}
+
 export async function encryptPassword(userPassword) {
     try {
       
-        const hashedPassword = await new Promise((resolve, reject) => {
-          bcrypt.hash(userPassword, SALT_ROUNDS, function(err, hash) {
+        const hashedPassword: ReturnValue = await new Promise((resolve, reject) => {
+          bcrypt.hash(userPassword, SALT_ROUNDS, function(err: string, hash: string) {
             if (err) reject(err)
-            resolve(hash)
+            resolve({
+                status: 1,
+                userPasswordHash: hash
+            })
           });
         })
       
@@ -27,7 +37,7 @@ export async function encryptPassword(userPassword) {
 export async function comparePassword(userPassword, userPasswordHash) {
     try {
         let hash = userPasswordHash.replace('$2y$', '$2a$');
-        const isCorrect = await new Promise((resolve, reject) => {
+        const isCorrect: ReturnValue = await new Promise((resolve, reject) => {
             bcrypt.compare(userPassword, hash, function(err, correct) {
                 if (correct == true) {
                     resolve({
@@ -48,16 +58,19 @@ export async function comparePassword(userPassword, userPasswordHash) {
 
 export async function grantToken(userId) {
     try {
-        const jwt_token = await new Promise((resolve, reject) => {
+        const userJwtToken: ReturnValue = await new Promise((resolve, reject) => {
             let token = jwt.sign({
                 user_id: userId
             }, TOKEN_SECRET, {
                 expiresIn: '7d'
             });
-            resolve(token)
+            resolve({
+                status: 1,
+                userJwtToken: token
+            })
         })
       
-        return jwt_token
+        return userJwtToken
     } catch (err) {
         console.log(err)
         throw Error(err)
@@ -92,12 +105,15 @@ export async function checkAvailableUser(user) {
 
 export async function transformTokentoUserid(token) {
     try {
-        const token_data = await new Promise((resolve, reject) => {
+        const userId: ReturnValue = await new Promise((resolve, reject) => {
             let decoded = jwt.verify(token, TOKEN_SECRET);
-            resolve(decoded.user_id)
+            resolve({
+                status: 1,
+                userId: decoded.user_id
+            })
         })
       
-        return token_data
+        return userId
         
     } catch (err) {
         console.log(err)
