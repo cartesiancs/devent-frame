@@ -14,9 +14,9 @@ const userFormCheck = {
         let pattern_spc = /[^\w]/;
         
         if (pattern_spc.test(String(form_id.value)) == true || form_id.value == '' ) {
-            switchValidMessage(form_id, false)
+            main.userFormCheck.switchValidMessage(form_id, false)
         } else {
-            switchValidMessage(form_id, true)
+            main.userFormCheck.switchValidMessage(form_id, true)
         }
     },
     
@@ -24,9 +24,9 @@ const userFormCheck = {
         let form_pw = document.querySelector("#Password");
         
         if (form_pw.value.length < 8) {
-            switchValidMessage(form_pw, false)
+            main.userFormCheck.switchValidMessage(form_pw, false)
         } else {
-            switchValidMessage(form_pw, true)
+            main.userFormCheck.switchValidMessage(form_pw, true)
         }
     },
     
@@ -35,9 +35,9 @@ const userFormCheck = {
         let patten_eml = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
         
         if (patten_eml.test(String(form_email.value)) == false) {
-            switchValidMessage(form_email, false)
+            main.userFormCheck.switchValidMessage(form_email, false)
         } else {
-            switchValidMessage(form_email, true)
+            main.userFormCheck.switchValidMessage(form_email, true)
         }
     }
 }
