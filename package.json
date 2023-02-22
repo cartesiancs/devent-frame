@@ -8,8 +8,7 @@
     "test": "mocha",
     "start": "node app.js",
     "build-webpack": "webpack --mode=production",
-    "build-ts": "tsc",
-    "watch-ts": "tsc -w"
+    "build-ts": "tsc -w"
   },
   "repository": {
     "type": "git",

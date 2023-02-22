@@ -1,15 +1,13 @@
 import { Router } from 'express';
+import { feedController } from '../controllers/feed.ctrl.js';
+
 const router = Router();
 
-import { getFeed, insertFeed, deleteFeed, updateFeed } from '../controllers/feed.ctrl.js';
-
-
-router.get('/:idx', getFeed);
-router.get('/', getFeed);
-
-router.post('/', insertFeed);
-router.delete('/:idx', deleteFeed);
-router.put('/:idx', updateFeed);
+router.get('/:idx', feedController.get);
+router.get('/', feedController.get);
+router.post('/', feedController.insert);
+router.delete('/:idx', feedController.delete);
+router.put('/:idx', feedController.update);
 
 
 export default router;

@@ -1,15 +1,13 @@
 import { Router } from 'express';
+import { tokenMiddleware } from '../middlewares/token.js';
+import { userController } from '../controllers/users.ctrl.js';
+
 const router = Router();
 
-import { check } from '../middlewares/token.js';
 
-
-import { create, deleteUserInfo, getUserInfo } from '../controllers/users.ctrl.js';
-
-
-router.post('/', create);
-router.delete('/:user_id', check, deleteUserInfo);
-router.get('/:user_id', getUserInfo);
+router.post('/', userController.create);
+router.delete('/:user_id', tokenMiddleware.check, userController.delete);
+router.get('/:user_id', userController.get);
 
 
 export default router;
