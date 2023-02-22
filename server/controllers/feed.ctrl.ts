@@ -26,7 +26,7 @@ const feedController = {
         if (Array.isArray(resultFeed) && resultFeed.length === 0) {
             res.status(404).json({data:'', msg:'Not Found'})
         } else {
-            res.status(200).json({data :resultFeed})
+            res.status(200).json({data: resultFeed})
         }
     },
     

@@ -101,7 +101,7 @@ const userService = {
     },
 
     
-    transformTokentoUserid: async function (token) {
+    transformTokentoUserid: async function ({ token }) {
         try {
             const userId: ReturnValue = await new Promise((resolve, reject) => {
                 let decoded = jwt.verify(token, TOKEN_SECRET);

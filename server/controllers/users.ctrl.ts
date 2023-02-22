@@ -26,28 +26,28 @@ const userController = {
         let user = { userId, userPasswordHash, userEmail }
         let data = await userModel.createUser(user)
     
-        let is_grant: any = await userModel.grantAuthorization(userId, 1);
-    
-        if (is_grant.status == 1) {
-            let getJwtToken = await userService.grantToken({ userId: userId });
-            let createdToken = getJwtToken.userJwtToken
-            res.status(200).json({status:1, token: createdToken})
-        } else {
-            res.status(401).json({status:0})
+        let isGrantAuthorization: any = await userModel.grantAuthorization(userId, 1);
+        let getJwtToken = await userService.grantToken({ userId: userId });
+        let createdToken = getJwtToken.userJwtToken
+
+        if (isGrantAuthorization.status == 0) {
+            return res.status(401).json({status:0})
         }
+
+        res.status(200).json({status:1, token: createdToken})
     },
     
     
     delete: async function (req, res) {
         let userId = req.params.user_id;
         let isRevoke: any = await userModel.grantAuthorization(userId, 0);
-    
-        if (isRevoke.status == 1) {
-            res.clearCookie('user')
-            res.status(200).json({status:1})
-        } else {
-            res.status(200).json({status:0})
+
+        if (isRevoke.status == 0) {
+            return res.status(200).json({status:0})
         }
+    
+        res.clearCookie('user')
+        res.status(200).json({status:1})
     },
     
     
@@ -62,12 +62,12 @@ const userController = {
                 user_email: userInfo.user_email, 
                 user_id: userInfo.user_id
             }
-        
-            if (userInfo.user_auth >= 1) {
-                res.status(200).json({status:1, data:result})
-            } else {
-                res.status(200).json({status:0})
+
+            if (userInfo.user_auth <= 0) {
+                return res.status(200).json({status:0})
             }
+        
+            res.status(200).json({status:1, data:result})
         } catch (error) {
             res.status(500).json({status:0})
         }

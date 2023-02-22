@@ -13,16 +13,24 @@ const authController = {
                 userPassword: userPassword,
                 userPasswordHash: userInfo.user_pw
             })
-            
-            if (result.status == 1 && userInfo.user_auth == 1) {
-                let getJwtToken = await userService.grantToken({ userId: userId });
-                let createdToken = getJwtToken.userJwtToken
-                res.status(200).json({status:1, token: createdToken})
-            } else if (userInfo.user_auth == 0) {
-                res.status(401).json({status: -1})
-            } else {
-                res.status(401).json({status: 0})
-            }  
+
+            if (userInfo.user_auth == 0) {
+                return res.status(401).json({status: -1})
+            }
+
+            if (result.status == 0) {
+                return res.status(401).json({status: -1})
+            }
+
+            let getJwtToken = await userService.grantToken({ userId: userId });
+            let createdToken = getJwtToken.userJwtToken
+
+            if (getJwtToken.status == 0) {
+                return res.status(401).json({status: -1})
+            }
+
+            res.status(200).json({status:1, token: createdToken})
+
         } catch (error) {
             res.status(401).json({status:0})
         }
