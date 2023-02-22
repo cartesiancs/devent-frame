@@ -29,54 +29,33 @@ export default class Users {
     
             if (data.status == 1) {
                 Cookies.set('user', data.token)
-        
-                Swal.fire({
-                    icon: 'success',
-                    title: '가입에 성공했어요',
-                    showConfirmButton: false,
-                    heightAuto: false,
-    
-                    timer: 1300
+
+                dds.toast({
+                    content: '가입에 성공했어요'
                 })
+
                 setTimeout(() => {
                     location.href = '/'
                 }, 1200);
             } else if (data.status == 2) { // 비번 8자리
-                Swal.fire({
-                    icon: 'error',
-                    title: '바밀번호는 8자리 이상이여야 해요',
-                    showConfirmButton: false,
-                    heightAuto: false,
-    
-                    timer: 1500
+                dds.toast({
+                    content: '바밀번호는 8자리 이상이여야 해요'
                 })
             } else if (data.status == 5) { // 특수문자
-                Swal.fire({
-                    icon: 'error',
-                    title: '아이디에 특수문자는 입력할 수 없어요',
-                    showConfirmButton: false,
-                    heightAuto: false,
-    
-                    timer: 1500
+                dds.toast({
+                    content: '아이디에 특수문자는 입력할 수 없어요'
                 })
+
             } else if (data.status == 0) {
-                Swal.fire({
-                    icon: 'error',
-                    title: '사용 불가한 아이디 또는 이메일이에요',
-                    showConfirmButton: false,
-                    heightAuto: false,
-                    timer: 1500
+                dds.toast({
+                    content: '사용 불가한 아이디 또는 이메일이에요'
                 })
             }
         } catch (error) {
-            Swal.fire({
-                icon: 'error',
-                title: '에러가 발생했어요',
-                showConfirmButton: false,
-                heightAuto: false,
-    
-                timer: 1500
+            dds.toast({
+                content: '에러가 발생했어요'
             })
+
         }
     }
 
@@ -96,15 +75,10 @@ export default class Users {
 
         if (data.status == 1) {
             Cookies.set('user', data.token)
-    
-            Swal.fire({
-                icon: 'success',
-                title: '로그인에 성공했어요',
-                showConfirmButton: false,
-                heightAuto: false,
-    
-                timer: 1100
+            dds.toast({
+                content: '로그인에 성공했어요'
             })
+    
             setTimeout(() => {
                 location.href = '/'
             }, 1400);
@@ -133,31 +107,23 @@ export default class Users {
     
         let data = await response.json();
         if (data.status == 1) {
-            Swal.fire({
-                icon: 'success',
-                title: '정상적으로 탈퇴를 완료했어요',
-                showConfirmButton: false,
-                timer: 1000
+            dds.toast({
+                content: '정상적으로 탈퇴를 완료했어요'
             })
+
             setTimeout(() => {
                 location.href = '/'
             }, 1200);
         } else if (data.status == -1) {
-            Swal.fire({
-                icon: 'error',
-                title: '권한이 없어요',
-                showConfirmButton: false,
-                heightAuto: false,
-    
-                timer: 1500
+            dds.toast({
+                content: '탈퇴 권한이 없어요'
             })
+
         } else {
-            Swal.fire({
-                icon: 'error',
-                title: '탈퇴에 실패했어요',
-                showConfirmButton: false,
-                timer: 1000
+            dds.toast({
+                content: '탈퇴에 실패했어요'
             })
+
         } 
     }
 
