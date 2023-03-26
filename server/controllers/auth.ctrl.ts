@@ -11,10 +11,10 @@ const authController = {
             let userInfo = await userModel.loadUserinfo(userId)
             let result = await userService.comparePassword({ 
                 userPassword: userPassword,
-                userPasswordHash: userInfo.user_pw
+                userPasswordHash: userInfo.user.userPassword
             })
 
-            if (userInfo.user_auth == 0) {
+            if (userInfo.user.userAuthLevel == 0) {
                 return res.status(401).json({status: -1})
             }
 

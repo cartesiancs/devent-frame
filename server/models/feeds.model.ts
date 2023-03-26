@@ -1,4 +1,4 @@
-import conn from '../databases/db.js'
+import { MySQLConnect } from '../databases/db.js'
 
 export async function getFeedsRange(range) {
     try {
@@ -6,7 +6,7 @@ export async function getFeedsRange(range) {
 
         let selectFeeds = "SELECT * FROM feeds WHERE idx BETWEEN ? AND ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(selectFeeds, [idxStart, idxEnd], function(err, result) {
+            MySQLConnect.query(selectFeeds, [idxStart, idxEnd], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 }
@@ -25,7 +25,7 @@ export async function getFeedsIdx(idx) {
     try {
         let selectFeed = "SELECT * FROM feeds WHERE idx = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(selectFeed, [idx], function(err, result) {
+            MySQLConnect.query(selectFeed, [idx], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 }
@@ -44,9 +44,9 @@ export async function getFeedsIdx(idx) {
 export async function insertFeedData(insertData) {
     try {
         let { content, owner, date, type } = insertData;
-        let insertFeeds = "INSERT INTO feeds(feed_content, feed_owner, feed_date, feed_type) VALUES (?,?,?,?)";
+        let insertFeeds = "INSERT INTO feeds(content, owner, date, type) VALUES (?,?,?,?)";
         const data = await new Promise((resolve, reject) => {
-            conn.query(insertFeeds, [content, owner, date, type], function(err, result) {
+            MySQLConnect.query(insertFeeds, [content, owner, date, type], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 }
@@ -66,7 +66,7 @@ export async function deleteFeedData(deleteFeed): Promise<{ }> {
         let { idxFeed, owner } = deleteFeed;
         let deleteFeeds = "DELETE FROM feeds WHERE idx = ? AND feed_owner = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(deleteFeeds, [idxFeed, owner], function(err, result) {
+            MySQLConnect.query(deleteFeeds, [idxFeed, owner], function(err, result) {
                 const returnResult: any = result;
 
                 if (err) {
@@ -94,7 +94,7 @@ export async function updateFeedData(updateData) {
         let { idxFeed, contentFeed, owner } = updateData;
         let updateFeeds = "UPDATE feeds SET feed_content = ? WHERE idx = ? AND feed_owner = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(updateFeeds, [contentFeed, idxFeed, owner], function(err, result) {
+            MySQLConnect.query(updateFeeds, [contentFeed, idxFeed, owner], function(err, result) {
                 const returnResult: any = result;
 
                 if (err) {

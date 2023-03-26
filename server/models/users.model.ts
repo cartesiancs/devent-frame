@@ -1,28 +1,33 @@
-import conn from '../databases/db.js'
+import { MySQLConnect, AppDataSource } from '../databases/db.js'
 
-export async function createUser(user) {
+import { User } from "../databases/entity/User.js";
+
+export async function createUser({ userId, userPasswordHash, userEmail }) {
     try {
-        let { userId, userPasswordHash, userEmail } = user;
-        let insertUser = "INSERT INTO users(user_id, user_pw, user_email) VALUES (?, ?, ?)";
+        const userValues = new User()
+        userValues.userId = userId
+        userValues.userPassword = userPasswordHash
+        userValues.userEmail = userEmail
+        userValues.userAuthLevel = 1
 
-        let data = conn.query(insertUser, [userId, userPasswordHash, userEmail])
-        return data[0]
+        const userRepository = AppDataSource.getRepository(User);
+        await userRepository.save(userValues)
+        return { status: 1 }
+
     } catch (err) {
         console.log(err)
-        throw Error(err)
+        return { status: 0 }
     }
 }
 
 export async function loadUserinfo(userId) {
     try {
-        let getUser = "SELECT * FROM users WHERE user_id = ?";
-        const data = await new Promise((resolve, reject) => {
-            conn.query(getUser, [userId], function(err, result) {
-                resolve(result)
-            });
+        const userRepository = AppDataSource.getRepository(User);
+        const getUser = await userRepository.findOneBy({
+            userId: userId
         })
 
-        return data[0]
+        return { status: 1, user: getUser }
     } catch (err) {
         console.log(err)
         throw Error(err)
@@ -33,9 +38,9 @@ export async function checkDuplicateUser(user) {
     try {
         let { userId, userEmail} = user;
 
-        let getUserCount = "SELECT COUNT(*) as cnt FROM users WHERE user_id = ? OR user_email = ?";
+        let getUserCount = "SELECT COUNT(*) as cnt FROM users WHERE userId = ? OR userEmail = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(getUserCount, [userId, userEmail], function(err, result) {
+            MySQLConnect.query(getUserCount, [userId, userEmail], function(err, result) {
                 resolve(result)
             });
         })
@@ -51,9 +56,9 @@ export async function checkDuplicateUser(user) {
 export async function grantAuthorization(userId, auth) {
     try {
 
-        let updateUser = "UPDATE users SET user_auth = ? WHERE user_id = ?";
+        let updateUser = "UPDATE users SET userAuthLevel = ? WHERE userId = ?";
         const data = await new Promise((resolve, reject) => {
-            conn.query(updateUser, [auth, userId], function(err, result) {
+            MySQLConnect.query(updateUser, [auth, userId], function(err, result) {
                 if (err) {
                     resolve({status:0})
                 } else {

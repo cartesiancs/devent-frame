@@ -57,19 +57,19 @@ const userController = {
             let userInfo = await userModel.loadUserinfo(userId);
     
             let result = {
-                idx: userInfo.idx, 
-                user_auth: userInfo.user_auth, 
-                user_email: userInfo.user_email, 
-                user_id: userInfo.user_id
+                idx: userInfo.user.idx, 
+                user_auth: userInfo.user.userAuthLevel, 
+                user_email: userInfo.user.userEmail, 
+                user_id: userInfo.user.userId
             }
 
-            if (userInfo.user_auth <= 0) {
-                return res.status(200).json({status:0})
+            if (userInfo.user.userAuthLevel <= 0) {
+                return res.status(200).json({ status: 0 })
             }
         
-            res.status(200).json({status:1, data:result})
+            res.status(200).json({ status: 1, data: result })
         } catch (error) {
-            res.status(500).json({status:0})
+            res.status(500).json({ status: 0 })
         }
     }
 }

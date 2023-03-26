@@ -5,7 +5,9 @@
         "moduleResolution": "node",
         "target": "es6",
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
     },
     "include": [
         "./server/**/*"
