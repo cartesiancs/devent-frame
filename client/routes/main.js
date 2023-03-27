@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 
-router.get('/', function(req, res) {
+router.get('*', function(req, res) {
     res.render('index')
 });
 
@@ -14,8 +14,8 @@ router.get('/auth/signup', function(req, res) {
     res.render('page/user/signup')
 });
 
-router.get('*', function(req, res){
-    res.status(404).render('page/error/404')
-});
+// router.get('*', function(req, res){
+//     res.status(404).render('page/error/404')
+// });
 
 export default router;
