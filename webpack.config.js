@@ -6,8 +6,20 @@ const __dirname = path.dirname(__filename);
 
 export default 
 {
-    "entry":["./client/public/js/main.js"],
+    "entry":["./client/src/index.js"],
     "watch": true,
+    "module": {
+        "rules": [
+            {
+                "test": /\.jsx?/,
+                "loader": 'babel-loader',
+                "options": {
+                    "presets": ['@babel/preset-env', '@babel/preset-react']
+                }
+            },
+        ],
+    },
+
     "output": {
         "filename": "index.js",
         "path": path.resolve(__dirname, 'client/dist'),

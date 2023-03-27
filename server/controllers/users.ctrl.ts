@@ -59,7 +59,7 @@ const userController = {
             let result = {
                 idx: userInfo.user.idx, 
                 user_auth: userInfo.user.userAuthLevel, 
-                user_email: userInfo.user.userEmail, 
+                //user_email: userInfo.user.userEmail, 
                 user_id: userInfo.user.userId
             }
 

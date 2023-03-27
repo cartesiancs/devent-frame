@@ -3,7 +3,12 @@
     {{> head title="Frame"}}
   <body>
 
-    <dds-navbar nav-title="Frame" nav-fixed="top">
+
+
+    <div id="root"></div>
+
+
+    {{!-- <dds-navbar nav-title="Frame" nav-fixed="top">
         <dds-navbar-item item-link="https://devent.kr">devent.kr</dds-navbar-item>
     </dds-navbar>
 
@@ -63,7 +68,6 @@
         </div>
     </section>
 
-
     
                                 
     <dds-footer
@@ -71,11 +75,11 @@
         sub-title="데벤트"
         company-name="사업자등록번호 : 429-52-00535 | 대표: 허형준"
         project-email="문의: info@devent.kr">
-    </dds-footer>
+    </dds-footer> --}}
     
     {{> footer}}
 
-    <script>
+    {{!-- <script>
         let token = new main.Token()
         let users = new main.Users()
 
@@ -116,7 +120,7 @@
                 })
             }, 300);
         }
-    </script>
+    </script> --}}
 
   </body>
 </html>

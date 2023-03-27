@@ -64,7 +64,7 @@ export async function insertFeedData(insertData) {
 export async function deleteFeedData(deleteFeed): Promise<{ }> {
     try {
         let { idxFeed, owner } = deleteFeed;
-        let deleteFeeds = "DELETE FROM feeds WHERE idx = ? AND feed_owner = ?";
+        let deleteFeeds = "DELETE FROM feeds WHERE idx = ? AND owner = ?";
         const data = await new Promise((resolve, reject) => {
             MySQLConnect.query(deleteFeeds, [idxFeed, owner], function(err, result) {
                 const returnResult: any = result;
@@ -92,7 +92,7 @@ export async function deleteFeedData(deleteFeed): Promise<{ }> {
 export async function updateFeedData(updateData) {
     try {
         let { idxFeed, contentFeed, owner } = updateData;
-        let updateFeeds = "UPDATE feeds SET feed_content = ? WHERE idx = ? AND feed_owner = ?";
+        let updateFeeds = "UPDATE feeds SET content = ? WHERE idx = ? AND owner = ?";
         const data = await new Promise((resolve, reject) => {
             MySQLConnect.query(updateFeeds, [contentFeed, idxFeed, owner], function(err, result) {
                 const returnResult: any = result;
