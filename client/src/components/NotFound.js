@@ -2,6 +2,9 @@ import React from "react";
 
 
 function NotFound() {
+  function handleClickHome() {
+    location.href = '/'
+  }
     return (
         <div class="container h-100 ">
         <div class="row h-100 ">
@@ -10,7 +13,7 @@ function NotFound() {
               <div class="card-body p-4 p-sm-5">
                 <h2 class="text-center mb-3 text-title">오 이게 무슨일이죠..?</h2>
                 <h6 class="text-center mb-4 text-secondary">페이지를 표시하지 못했어요ㅠㅠ </h6>
-                <button class="btn btn-blue-tint" onclick="location.href = '/'">홈으로</button>
+                <button class="btn btn-blue-tint" onClick={handleClickHome}>홈으로</button>
 
     
               </div>

@@ -8,7 +8,7 @@
     "test": "mocha",
     "start": "NODE_ENV=production node app.js",
     "start:dev": "NODE_ENV=development node app.js",
-    "build-webpack": "webpack --mode=production",
+    "build-webpack": "webpack --mode=development",
     "build-ts": "tsc -w"
   },
   "repository": {
