@@ -45,7 +45,7 @@ export async function checkDuplicateUser(user) {
             });
         })
 
-        return data[0]
+        return data[0].cnt
     } catch (err) {
         console.log(err)
         throw Error(err)

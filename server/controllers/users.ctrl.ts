@@ -11,12 +11,11 @@ const userController = {
     
         let isAvailable = await userService.checkAvailableUser({ userId: userId, userEmail: userEmail })
         let isDuplicate = await userModel.checkDuplicateUser({ userId, userEmail })
-
     
         if (String(userPassword).length <= 7) {
             return res.status(200).json({status: 2})
         }
-        if (isAvailable == 0 || isDuplicate == 0) {
+        if (isAvailable == 0 || isDuplicate != 0) {
             return res.status(200).json({status:0})
         }
     
