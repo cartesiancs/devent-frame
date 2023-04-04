@@ -7,7 +7,7 @@ function Signup() {
         userId: '',
         userEmail: '',
         userPw: ''
-      });
+    });
     
     const { userId, userEmail, userPw } = inputs;
     const userIdRef = useRef();
