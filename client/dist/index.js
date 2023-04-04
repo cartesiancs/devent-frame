@@ -277,7 +277,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router/esm/react-router.js\");\n/* harmony import */ var _components_Main_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Main.js */ \"./client/src/components/Main.js\");\n/* harmony import */ var _components_NotFound_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/NotFound.js */ \"./client/src/components/NotFound.js\");\n/* harmony import */ var _components_Login_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Login.js */ \"./client/src/components/Login.js\");\n/* harmony import */ var _components_Signup_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Signup.js */ \"./client/src/components/Signup.js\");\n\n\n\n\n\n\nvar App = function App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    exact: true,\n    path: \"/\",\n    component: _components_Main_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    path: \"/auth/login\",\n    component: _components_Login_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"]\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    path: \"/auth/signup\",\n    component: _components_Signup_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"]\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    path: \"*\",\n    component: _components_NotFound_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n  })));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://main/./client/src/App.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router/esm/react-router.js\");\n/* harmony import */ var _pages_Root_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/Root.js */ \"./client/src/pages/Root.js\");\n/* harmony import */ var _pages_Signup_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Signup.js */ \"./client/src/pages/Signup.js\");\n/* harmony import */ var _pages_Login_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Login.js */ \"./client/src/pages/Login.js\");\n/* harmony import */ var _pages_Notfound_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Notfound.js */ \"./client/src/pages/Notfound.js\");\n\n\n\n\n\n\nvar App = function App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    exact: true,\n    path: \"/\",\n    component: _pages_Root_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    path: \"/auth/login\",\n    component: _pages_Login_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"]\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    path: \"/auth/signup\",\n    component: _pages_Signup_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {\n    path: \"*\",\n    component: _pages_Notfound_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"]\n  })));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://main/./client/src/App.js?");
 
 /***/ }),
 
@@ -333,6 +333,50 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.js */ \"./client/src/App.js\");\n\n\n\n\n\nvar rootElement = document.getElementById(\"root\");\nvar root = react_dom_client__WEBPACK_IMPORTED_MODULE_2__.createRoot(rootElement);\nroot.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n  callback: function callback() {\n    return console.log(\"renderered\");\n  }\n}))));\n\n// ReactDOM.render(\n//     <React.StrictMode>\n//         <BrowserRouter>\n//         <App/>\n//         </BrowserRouter>\n//     </React.StrictMode>, \n//     document.getElementById('root')\n// );\n\n//# sourceURL=webpack://main/./client/src/index.js?");
+
+/***/ }),
+
+/***/ "./client/src/pages/Login.js":
+/*!***********************************!*\
+  !*** ./client/src/pages/Login.js ***!
+  \***********************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _components_Login_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Login.js */ \"./client/src/components/Login.js\");\n\n\nfunction LoginPage() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Login_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoginPage);\n\n//# sourceURL=webpack://main/./client/src/pages/Login.js?");
+
+/***/ }),
+
+/***/ "./client/src/pages/Notfound.js":
+/*!**************************************!*\
+  !*** ./client/src/pages/Notfound.js ***!
+  \**************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _components_NotFound_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/NotFound.js */ \"./client/src/components/NotFound.js\");\n\n\nfunction NotfoundPage() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_NotFound_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NotfoundPage);\n\n//# sourceURL=webpack://main/./client/src/pages/Notfound.js?");
+
+/***/ }),
+
+/***/ "./client/src/pages/Root.js":
+/*!**********************************!*\
+  !*** ./client/src/pages/Root.js ***!
+  \**********************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _components_Main_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Main.js */ \"./client/src/components/Main.js\");\n\n\nfunction RootPage() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Main_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RootPage);\n\n//# sourceURL=webpack://main/./client/src/pages/Root.js?");
+
+/***/ }),
+
+/***/ "./client/src/pages/Signup.js":
+/*!************************************!*\
+  !*** ./client/src/pages/Signup.js ***!
+  \************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _components_Signup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Signup.js */ \"./client/src/components/Signup.js\");\n\n\nfunction SignupPage() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Signup_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SignupPage);\n\n//# sourceURL=webpack://main/./client/src/pages/Signup.js?");
 
 /***/ }),
 

@@ -1,20 +1,24 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Main from './components/Main.js'
-import NotFound from './components/NotFound.js'
-import Login from './components/Login.js'
-import Signup from './components/Signup.js'
+import RootPage from './pages/Root.js'
+import SignupPage from './pages/Signup.js'
+import LoginPage from './pages/Login.js'
+import NotfoundPage from './pages/Notfound.js'
+
+
+
+
 
 const App = () => {
     return (
         <div>
             <Switch>
-                <Route exact path="/" component={Main} />
+                <Route exact path="/" component={RootPage} />
 
-                <Route path="/auth/login" component={Login} />
-                <Route path="/auth/signup" component={Signup} />
+                <Route path="/auth/login" component={LoginPage} />
+                <Route path="/auth/signup" component={SignupPage} />
 
-                <Route path='*' component={NotFound} />
+                <Route path='*' component={NotfoundPage} />
             </Switch>
 
         </div>
