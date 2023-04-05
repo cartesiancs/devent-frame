@@ -4,9 +4,7 @@ import RootPage from './pages/Root.js'
 import SignupPage from './pages/Signup.js'
 import LoginPage from './pages/Login.js'
 import NotfoundPage from './pages/Notfound.js'
-
-
-
+import './App.css'
 
 
 const App = () => {

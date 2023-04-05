@@ -35,6 +35,34 @@ async function insertFeed(content) {
     return data;
 }
 
+
+// async  delete(idx) {
+//     let response = await fetch("/api/feeds/"+idx, {
+//         method: "DELETE",
+//         headers: {
+//             "Content-Type": "application/x-www-form-urlencoded",
+//             "x-access-token": this.token
+//         }
+//     });
+
+//     let data = response.json();
+//     return data;
+// }
+
+// async update(idx, content) {
+//     let response = await fetch("/api/feeds/"+idx, {
+//         method: "PUT",
+//         headers: {
+//             "Content-Type": "application/x-www-form-urlencoded",
+//             "x-access-token": this.token
+//         },
+//         body :`content=${content}`
+//     });
+
+//     let data = response.json();
+//     return data;
+// }
+
 function Feed() {
     const [feeds, setFeeds] = useState([{idx: 0, content:'', owner: ''}])
 
@@ -53,12 +81,32 @@ function Feed() {
 
     return (
         <div>
+            <FeedInput></FeedInput>
             {feeds.map(feed => (
                 <div>
                     {feed.idx} {feed.content} {feed.owner} {feed.date}
                 </div>
             ))}
             
+        </div>
+    );
+}
+
+function FeedInput() {
+    const [input, setInput] = useState('')
+
+    const handleChange = (e) => {
+        setInput(e.target.value)
+    }
+
+    const handleClick = () => {
+        insertFeed(input)
+    }
+
+    return (
+        <div>
+            <textarea onChange={handleChange} value={input}></textarea>
+            <button className="btn btn-primary" onClick={handleClick}>Submit</button>            
         </div>
     );
 }
