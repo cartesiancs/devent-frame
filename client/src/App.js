@@ -6,7 +6,6 @@ import LoginPage from './pages/Login.js'
 import NotfoundPage from './pages/Notfound.js'
 import './App.css'
 
-
 const App = () => {
     return (
         <div>
