@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
 
 import data from '../config/jwt.js';
-import { checkDuplicateUser } from '../models/users.model.js';
 
 const SALT_ROUNDS = 10;
 const TOKEN_SECRET = data.secret;
