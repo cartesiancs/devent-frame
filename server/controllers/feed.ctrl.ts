@@ -1,6 +1,6 @@
 
 
-import * as feedModel from '../models/feeds.model.js';
+import { feedModel } from '../models/feeds.model.js';
 
 import { userService } from '../services/users.serv.js'
 import sanitizeHtml from 'sanitize-html';
@@ -20,7 +20,7 @@ const feedController = {
         if (isRange == 'true') {
             resultFeed = await feedModel.getFeedsRange({ idxStart, idxEnd })
         } else {
-            resultFeed = await feedModel.getFeedsIdx(idx)
+            resultFeed = await feedModel.getFeedsRange({ idxStart: idx, idxEnd: idx })
         }
     
         if (Array.isArray(resultFeed) && resultFeed.length === 0) {
@@ -42,8 +42,7 @@ const feedController = {
         let date = now.format("YYYY.MM.DD.HH.mm.ss"); 
         let type = 1;
     
-        let insertFeed = { content, owner, date, type };
-        let data: any = await feedModel.insertFeedData(insertFeed)
+        let data: any = await feedModel.insertFeedData({ content: content, owner: owner, date: date, type: type })
     
         if (data.status == 1) {
             res.status(200).json({status:1})
@@ -61,8 +60,7 @@ const feedController = {
     
         let owner =  getUserId.userId
     
-        let deleteFeed = { idxFeed, owner };
-        let data: any = await feedModel.deleteFeedData(deleteFeed)
+        let data: any = await feedModel.deleteFeedData({ idxFeed, owner })
     
         if (data.status == 1) {
             res.status(200).json({status:1})
