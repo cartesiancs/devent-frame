@@ -1,6 +1,6 @@
 import React from "react";
-import Main from "../components/Main.js"
-import Feed from "../components/Feed.js"
+import Main from "../components/Main"
+import Feed from "../components/Feed"
 
 
 function RootPage() {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import dds from 'deventds/dist/handle'
+import Cookies from 'js-cookie'
 
 function Main() {
     const [isLogin, setLoginStatus] = useState(0);

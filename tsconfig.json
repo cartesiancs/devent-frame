@@ -3,11 +3,16 @@
         "outDir": "./dist",
         "allowJs": true,
         "moduleResolution": "node",
-        "target": "es6",
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "paths": {
+            "react": [ "./node_modules/@types/react" ]
+        }
     },
     "include": [
         "./server/**/*"

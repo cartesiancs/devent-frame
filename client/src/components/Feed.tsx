@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import dds from 'deventds/dist/handle'
+import Cookies from 'js-cookie'
 
 async function getFeed(feed_idx, fetch_params) {
     let token = Cookies.get("user")
@@ -64,7 +65,7 @@ async function insertFeed(content) {
 // }
 
 function Feed() {
-    const [feeds, setFeeds] = useState([{idx: 0, content:'', owner: ''}])
+    const [feeds, setFeeds] = useState([{idx: 0, content:'', owner: '', date: ''}])
 
     useEffect(() => {
         const loadData = async () => {
